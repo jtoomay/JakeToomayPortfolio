@@ -1,4 +1,5 @@
 import { TrafficConeIcon } from "@/components/traffic-cone-icon";
+import { site } from "@/lib/site";
 
 export function UnderConstruction() {
   return (
@@ -29,6 +30,12 @@ export function UnderConstruction() {
             This site is being rebuilt from the ground up. Some pages may be
             missing or incomplete — check back soon.
           </p>
+          <a
+            href={`mailto:${site.email}`}
+            className="mt-2 rounded bg-foreground px-5 py-3 font-mono text-xs uppercase tracking-widest text-background transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+          >
+            Contact Me
+          </a>
         </div>
         <div className="h-2 bg-hazard-stripes" />
       </div>
