@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Space_Grotesk, Inter, IBM_Plex_Mono } from "next/font/google";
 import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
+import { UnderConstruction } from "@/components/under-construction";
 import { site } from "@/lib/site";
 import "./globals.css";
 
@@ -48,10 +49,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${spaceGrotesk.variable} ${inter.variable} ${plexMono.variable} h-full antialiased`}
     >
-      <body className="flex min-h-full flex-col bg-background font-sans text-foreground">
-        <Nav />
-        <main className="flex flex-1 flex-col">{children}</main>
-        <Footer />
+      <body className="flex min-h-full flex-col overflow-hidden bg-background font-sans text-foreground">
+        <div inert className="flex min-h-full flex-1 flex-col">
+          <Nav />
+          <main className="flex flex-1 flex-col">{children}</main>
+          <Footer />
+        </div>
+        <UnderConstruction />
       </body>
     </html>
   );

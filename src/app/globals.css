@@ -8,6 +8,7 @@
   --border: #d8dbd6;
   --accent: #0c8599;
   --accent-foreground: #ffffff;
+  --hazard: #c2670d;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -19,6 +20,7 @@
     --border: #232a38;
     --accent: #2dd4cf;
     --accent-foreground: #0b0f17;
+    --hazard: #f5a623;
   }
 }
 
@@ -30,6 +32,7 @@
   --color-border: var(--border);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
+  --color-hazard: var(--hazard);
   --font-display: var(--font-space-grotesk);
   --font-sans: var(--font-inter);
   --font-mono: var(--font-plex-mono);
@@ -56,4 +59,14 @@ body {
     linear-gradient(to right, var(--border) 1px, transparent 1px),
     linear-gradient(to bottom, var(--border) 1px, transparent 1px);
   background-size: 32px 32px;
+}
+
+.bg-hazard-stripes {
+  background-image: repeating-linear-gradient(
+    45deg,
+    var(--hazard) 0,
+    var(--hazard) 10px,
+    var(--foreground) 10px,
+    var(--foreground) 20px
+  );
 }
