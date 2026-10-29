@@ -1,36 +1,36 @@
-import type { Metadata } from "next";
-import { Space_Grotesk, Inter, IBM_Plex_Mono } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Newsreader, Public_Sans } from "next/font/google";
 import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
-import { UnderConstruction } from "@/components/under-construction";
 import { site } from "@/lib/site";
 import "./globals.css";
 
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space-grotesk",
+const newsreader = Newsreader({
+  variable: "--font-newsreader",
   subsets: ["latin"],
+  display: "swap",
 });
 
-const inter = Inter({
-  variable: "--font-inter",
+const publicSans = Public_Sans({
+  variable: "--font-public-sans",
   subsets: ["latin"],
+  display: "swap",
 });
 
-const plexMono = IBM_Plex_Mono({
-  variable: "--font-plex-mono",
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-});
+export const viewport: Viewport = {
+  colorScheme: "dark",
+  themeColor: "#12090d",
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name} — ${site.role}`,
+    default: `${site.name} — Custom software development`,
     template: `%s — ${site.name}`,
   },
   description: site.description,
   openGraph: {
-    title: `${site.name} — ${site.role}`,
+    title: `${site.name} — Custom software development`,
     description: site.description,
     url: site.url,
     siteName: site.name,
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary",
-    title: `${site.name} — ${site.role}`,
+    title: `${site.name} — Custom software development`,
     description: site.description,
   },
 };
@@ -47,15 +47,20 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${spaceGrotesk.variable} ${inter.variable} ${plexMono.variable} h-full antialiased`}
+      className={`${newsreader.variable} ${publicSans.variable} h-full scroll-smooth antialiased`}
     >
-      <body className="flex min-h-full flex-col overflow-hidden bg-background font-sans text-foreground">
-        <div inert className="flex min-h-full flex-1 flex-col">
-          <Nav />
-          <main className="flex flex-1 flex-col">{children}</main>
-          <Footer />
-        </div>
-        <UnderConstruction />
+      <body className="flex min-h-full flex-col bg-background font-sans text-foreground">
+        <a
+          href="#content"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-20 focus:bg-surface focus:px-4 focus:py-2 focus:text-sm focus:text-foreground focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-link"
+        >
+          Skip to content
+        </a>
+        <Nav />
+        <main id="content" className="flex flex-1 scroll-mt-28 flex-col">
+          {children}
+        </main>
+        <Footer />
       </body>
     </html>
   );

@@ -1,40 +1,37 @@
-"use client";
-
+import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { nav, site } from "@/lib/site";
+import { nav } from "@/lib/site";
 
 export function Nav() {
-  const pathname = usePathname();
-
   return (
-    <header className="border-b border-border">
-      <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-x-4 gap-y-2 px-6 py-5 sm:px-8">
+    <header id="top" className="sticky top-0 z-10 border-b border-border bg-background">
+      <div className="mx-auto flex w-full max-w-3xl flex-col gap-4 px-6 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-8">
         <Link
-          href="/"
-          className="font-display text-lg font-medium tracking-tight text-foreground"
+          href="/#top"
+          className="inline-flex w-fit focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-link"
         >
-          {site.name}
+          <Image
+            src="/logo.png"
+            alt="Toomay LLC"
+            width={298}
+            height={112}
+            priority
+            className="h-10 w-auto sm:h-12"
+          />
         </Link>
-        <nav aria-label="Primary" className="flex flex-wrap items-center gap-x-1 gap-y-1">
-          {nav.map((item) => {
-            const isActive =
-              item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
-            return (
-              <Link
-                key={item.href}
-                href={item.href}
-                aria-current={isActive ? "page" : undefined}
-                className={`rounded px-2 py-2 font-mono text-xs uppercase tracking-widest transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent sm:px-3 ${
-                  isActive
-                    ? "text-accent"
-                    : "text-muted hover:text-foreground"
-                }`}
-              >
-                {item.label}
-              </Link>
-            );
-          })}
+        <nav aria-label="Primary">
+          <ul className="flex items-center gap-6">
+            {nav.map((item) => (
+              <li key={item.href}>
+                <Link
+                  href={item.href}
+                  className="text-sm text-muted transition-colors hover:text-foreground focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-link"
+                >
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
         </nav>
       </div>
     </header>

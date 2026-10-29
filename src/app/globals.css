@@ -1,27 +1,14 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f4f5f3;
-  --surface: #ffffff;
-  --foreground: #12161f;
-  --muted: #5b6472;
-  --border: #d8dbd6;
-  --accent: #0c8599;
+  --background: #12090d;
+  --surface: #1c1216;
+  --foreground: #f7f2f4;
+  --muted: #b7a3a9;
+  --border: #3a2a31;
+  --accent: #880830;
   --accent-foreground: #ffffff;
-  --hazard: #c2670d;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0b0f17;
-    --surface: #111726;
-    --foreground: #e7eaf0;
-    --muted: #8b93a3;
-    --border: #232a38;
-    --accent: #2dd4cf;
-    --accent-foreground: #0b0f17;
-    --hazard: #f5a623;
-  }
+  --link: #f0c9d2;
 }
 
 @theme inline {
@@ -32,10 +19,9 @@
   --color-border: var(--border);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
-  --color-hazard: var(--hazard);
-  --font-display: var(--font-space-grotesk);
-  --font-sans: var(--font-inter);
-  --font-mono: var(--font-plex-mono);
+  --color-link: var(--link);
+  --font-display: var(--font-newsreader);
+  --font-sans: var(--font-public-sans);
 }
 
 body {
@@ -52,21 +38,4 @@ body {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-}
-
-.bg-blueprint-grid {
-  background-image:
-    linear-gradient(to right, var(--border) 1px, transparent 1px),
-    linear-gradient(to bottom, var(--border) 1px, transparent 1px);
-  background-size: 32px 32px;
-}
-
-.bg-hazard-stripes {
-  background-image: repeating-linear-gradient(
-    45deg,
-    var(--hazard) 0,
-    var(--hazard) 10px,
-    var(--foreground) 10px,
-    var(--foreground) 20px
-  );
 }
